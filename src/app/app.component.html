@@ -1,0 +1,12 @@
+<h1>Hello World</h1>
+
+<div>
+  <input type="text" (keyup)="changeNote($event)" />
+  <button (click)="playSound()">Play {{ note }}</button>
+  <p>Notes Played: {{ notes }}</p>
+</div>
+<!--
+<div>
+  <input type="text" (keyup)="addNotes($event)" />
+  <button (click)="playAll()">Play {{ notes }}</button>
+</div> -->
