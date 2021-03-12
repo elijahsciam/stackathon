@@ -4,18 +4,45 @@ import * as Tone from 'tone';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: ['./app.component.css'],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   note: string;
   notes: string;
+  grid: Array<string>;
   constructor() {
     this.note = '';
     this.notes = '';
+    this.grid = [];
+  }
+  ngAfterContentInit() {
+    this.gridGenerator([
+      'C4',
+      'D4',
+      'E4',
+      'F4',
+      'G4',
+      'A4',
+      'B4',
+      'C5',
+      'D5',
+      'E5',
+      'F5',
+      'G5',
+      'A5',
+      'B5',
+      'C6',
+      'D6',
+    ]);
   }
   addButton(event: any): void {
-    this.notes += event.target.value;
+    this.grid.push(event.target.value);
   }
+  gridGenerator = (array: any) => {
+    for (var i = 0; i < array.length; i++) {
+      this.grid.push(array[i] + ' ');
+    }
+  };
   changeNote(event: any) {
     this.note = event.target.value;
   }
@@ -40,6 +67,11 @@ export class AppComponent {
     setTimeout(() => {
       Tone.Transport.stop();
     }, counter * 1000);
+  }
+  playGridNote(event: any) {
+    const synth = new Tone.Synth().toDestination();
+    console.log(event);
+    synth.triggerAttackRelease(event.target.textContent, '8n');
   }
 }
 

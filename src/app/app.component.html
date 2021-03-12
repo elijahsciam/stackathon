@@ -2,14 +2,24 @@
 
 <div>
   <input type="text" (keyup)="changeNote($event)" />
-  <button (click)="playSound()" (click)="addButton($event)">
-    Play {{ note }}
-  </button>
+  <button (click)="playSound()">Play {{ note }}</button>
   <p>
-    Notes Played:<p>
-      {{ notes }}
-    </p>
+    Notes Played:
+    {{ notes }}
   </p>
 
   <button (click)="playAllNotes()">Play All Notes</button>
+  <div id="add-note">
+    <input type="text" (keyup)="($event)" />
+    <button (click)="addButton($event)">Add A Note!</button>
+  </div>
+  <div>
+    <button
+      *ngFor="let notes of grid; index as i"
+      id="gridButton"
+      (click)="playGridNote($event)"
+    >
+      {{ this.grid[i] }}
+    </button>
+  </div>
 </div>
