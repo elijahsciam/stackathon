@@ -1,12 +1,15 @@
-<h1>Hello World</h1>
+<h1>Music App</h1>
 
 <div>
   <input type="text" (keyup)="changeNote($event)" />
-  <button (click)="playSound()">Play {{ note }}</button>
-  <p>Notes Played: {{ notes }}</p>
+  <button (click)="playSound()" (click)="addButton($event)">
+    Play {{ note }}
+  </button>
+  <p>
+    Notes Played:<p>
+      {{ notes }}
+    </p>
+  </p>
+
+  <button (click)="playAllNotes()">Play All Notes</button>
 </div>
-<!--
-<div>
-  <input type="text" (keyup)="addNotes($event)" />
-  <button (click)="playAll()">Play {{ notes }}</button>
-</div> -->
