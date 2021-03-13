@@ -1,0 +1,30 @@
+<div id="play-notes">
+  <input type="text" (keyup)="changeNote($event)" />
+  <button (click)="playSound()">Play {{ note }}</button>
+  <p>
+    Notes Played:
+    <button
+      *ngFor="let note of notes; index as i"
+      (click)="playGridNote($event)"
+    >
+      {{ notes[i] }}
+    </button>
+  </p>
+
+  <button (click)="playAllNotes()">Play All Notes</button>
+  <button (click)="clearAllNotes()">Clear</button>
+</div>
+
+<div
+  class="btn-group"
+  ngbDropdown
+  role="group"
+  aria-label="Button group with nested dropdown"
+>
+  <button class="btn btn-outline-primary" ngbDropdownToggle>Choose Time</button>
+  <div class="dropdown-menu" ngbDropdownMenu>
+    <button ngbDropdownItem value="8n">Eighth Note</button>
+    <button ngbDropdownItem value="4n">Quarter Note</button>
+    <button ngbDropdownItem value="2n">Half Note</button>
+  </div>
+</div>

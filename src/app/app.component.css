@@ -1,0 +1,24 @@
+#gridButton {
+  background-color: lavender;
+  border: solid black;
+  color: black;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 50px;
+}
+
+#add-note {
+  margin-top: 50px;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+#play-notes {
+  text-align: center;
+}
