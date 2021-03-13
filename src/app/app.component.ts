@@ -11,14 +11,15 @@ export class AppComponent {
   notes: Array<string>;
   grid: Array<string>;
   gridNotes: string;
+  time: Array<string>;
+  dropdownItem: string;
+  tempo: Array<number>;
+  tempoItem: number;
+  counter: number;
   constructor() {
     this.note = '';
     this.notes = [];
-    this.grid = [];
-    this.gridNotes = '';
-  }
-  ngAfterContentInit() {
-    this.gridGenerator([
+    this.grid = [
       'C4',
       'D4',
       'E4',
@@ -34,42 +35,31 @@ export class AppComponent {
       'A5',
       'B5',
       'C6',
-      'D6',
-      '',
-    ]);
+    ];
+    this.gridNotes = '';
+    this.time = ['4n', '2n', '1n', '8n'];
+    this.dropdownItem = this.time[0];
+    this.tempo = [0.3, 0.5, 0.7, 1, 1.5, 2];
+    this.tempoItem = 1;
+    this.counter = 0;
+  }
+  changeValue(event: any) {
+    const target = event.target.innerText;
+    if (event.target.name === 'tempo') {
+      this.tempoItem = Number(target);
+      this.counter = 0;
+    } else {
+      this.dropdownItem = target;
+    }
   }
   addButton(event: any): void {
-    this.grid.push(event.target.value);
+    this.grid.push(this.note);
   }
-  gridGenerator = (array: any) => {
-    for (var i = 0; i < array.length; i++) {
-      this.grid.push(array[i] + ' ');
-    }
-  };
   changeNote(event: any) {
     this.note = event.target.value;
   }
-  playSound() {
-    this.notes.push(this.note);
-    const synth = new Tone.Synth().toDestination();
-    synth.triggerAttackRelease(this.note, '8n');
-  }
-  playAllNotes() {
-    const synth = new Tone.Synth().toDestination();
-    const array = this.notes;
-    synth.sync();
-
-    let counter = 0;
-    console.log(this.notes);
-
-    for (let i = 0; i < array.length - 1; i++) {
-      synth.triggerAttackRelease(array[i], '4n', counter);
-      counter++;
-    }
-    Tone.Transport.start();
-    setTimeout(() => {
-      Tone.Transport.stop();
-    }, counter * 1000);
+  addToGrid(event: any) {
+    this.grid.push(this.note);
   }
   clearAllNotes() {
     this.notes = [];
@@ -77,26 +67,23 @@ export class AppComponent {
   }
   playGridNote(event: any) {
     const synth = new Tone.MonoSynth().toDestination();
-    console.log(event);
-    synth.triggerAttackRelease(event.target.innerText, '8n');
+    synth.triggerAttackRelease(event.target.innerText, this.dropdownItem);
     this.gridNotes += event.target.innerText;
     this.gridNotes += ' ';
   }
   playAllGridNotes() {
-    const synth = new Tone.MonoSynth().toDestination();
     const array = this.gridNotes.split(' ');
+    const synth = new Tone.MonoSynth().toDestination();
     synth.sync();
-
-    let counter = 0;
-
     for (let i = 0; i < array.length - 1; i++) {
-      synth.triggerAttackRelease(array[i], '8n', counter);
-      counter += 0.5;
+      synth.triggerAttackRelease(array[i], this.dropdownItem, this.counter);
+      this.counter += this.tempoItem;
+      Tone.Transport.start();
     }
-    Tone.Transport.start();
     setTimeout(() => {
       Tone.Transport.stop();
-    }, counter * 1000);
+      synth.unsync();
+    }, this.counter * 1000);
   }
 }
 
@@ -120,4 +107,27 @@ export class AppComponent {
 //   transform(input: any[]): any {
 //     return input.map((value) => value);
 //   }
+// }
+
+// playAllNotes() {
+//   const synth = new Tone.Synth().toDestination();
+//   const array = this.notes;
+//   synth.sync();
+
+//   let counter = 0;
+
+//   for (let i = 0; i < array.length - 1; i++) {
+//     synth.triggerAttackRelease(array[i], '4n', counter);
+//     counter++;
+//   }
+//   Tone.Transport.start();
+//   setTimeout(() => {
+//     Tone.Transport.stop();
+//   }, counter * 1000);
+// }
+
+// playSound() {
+//   this.notes.push(this.note);
+//   const synth = new Tone.Synth().toDestination();
+//   synth.triggerAttackRelease(this.note, '8n');
 // }
