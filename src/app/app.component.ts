@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Tone from 'tone';
 
 @Component({
@@ -8,12 +8,14 @@ import * as Tone from 'tone';
 })
 export class AppComponent {
   note: string;
-  notes: string;
+  notes: Array<string>;
   grid: Array<string>;
+  gridNotes: string;
   constructor() {
     this.note = '';
-    this.notes = '';
+    this.notes = [];
     this.grid = [];
+    this.gridNotes = '';
   }
   ngAfterContentInit() {
     this.gridGenerator([
@@ -33,6 +35,7 @@ export class AppComponent {
       'B5',
       'C6',
       'D6',
+      '',
     ]);
   }
   addButton(event: any): void {
@@ -47,20 +50,20 @@ export class AppComponent {
     this.note = event.target.value;
   }
   playSound() {
-    this.notes += this.note;
+    this.notes.push(this.note);
     const synth = new Tone.Synth().toDestination();
     synth.triggerAttackRelease(this.note, '8n');
-    this.notes += ' ';
   }
   playAllNotes() {
     const synth = new Tone.Synth().toDestination();
-    const array = this.notes.split(' ');
+    const array = this.notes;
     synth.sync();
 
     let counter = 0;
+    console.log(this.notes);
 
     for (let i = 0; i < array.length - 1; i++) {
-      synth.triggerAttackRelease(array[i], '8n', counter);
+      synth.triggerAttackRelease(array[i], '4n', counter);
       counter++;
     }
     Tone.Transport.start();
@@ -68,10 +71,32 @@ export class AppComponent {
       Tone.Transport.stop();
     }, counter * 1000);
   }
+  clearAllNotes() {
+    this.notes = [];
+    this.gridNotes = '';
+  }
   playGridNote(event: any) {
-    const synth = new Tone.Synth().toDestination();
+    const synth = new Tone.MonoSynth().toDestination();
     console.log(event);
-    synth.triggerAttackRelease(event.target.textContent, '8n');
+    synth.triggerAttackRelease(event.target.innerText, '8n');
+    this.gridNotes += event.target.innerText;
+    this.gridNotes += ' ';
+  }
+  playAllGridNotes() {
+    const synth = new Tone.MonoSynth().toDestination();
+    const array = this.gridNotes.split(' ');
+    synth.sync();
+
+    let counter = 0;
+
+    for (let i = 0; i < array.length - 1; i++) {
+      synth.triggerAttackRelease(array[i], '8n', counter);
+      counter += 0.5;
+    }
+    Tone.Transport.start();
+    setTimeout(() => {
+      Tone.Transport.stop();
+    }, counter * 1000);
   }
 }
 

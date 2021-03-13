@@ -2,7 +2,7 @@
   background-color: lavender;
   border: solid black;
   color: black;
-  padding: 15px 32px;
+  padding: 20px 40px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -12,4 +12,13 @@
 
 #add-note {
   margin-top: 50px;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+#play-notes {
+  text-align: center;
 }
