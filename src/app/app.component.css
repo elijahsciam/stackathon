@@ -1,15 +1,56 @@
-#gridButton {
-  background-color: lavender;
-  border: solid black;
-  color: black;
-  padding: 20px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 50px;
+h1 {
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 700;
+  color: #758ecd;
+}
+h3 {
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 23px;
+}
+p {
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+}
+blockquote {
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
 }
 
+#gridButton {
+  height: 4em;
+  width: 4em;
+  z-index: 1;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  border-radius: 0 0 5px 5px;
+  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset,
+    0 0 3px rgba(0, 0, 0, 0.2);
+  /* background: linear-gradient(to bottom, #eee 0%, #fff 100%); */
+}
+
+#gridButton:focus {
+  background-color: #104f55;
+  color: black;
+  transition: all 0.8s;
+}
+
+#gridButton:hover {
+  opacity: 0.7;
+}
 #add-note {
   margin-top: 50px;
 }
@@ -21,4 +62,25 @@
 
 #play-notes {
   text-align: center;
+}
+
+#grid {
+  height: 18.875em;
+  width: 34em;
+  margin: 5em auto;
+  padding: 3em 0 0 3em;
+  position: relative;
+  border: 1px solid #160801;
+  border-radius: 1em;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset,
+    0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background-image: url('https://t3.ftcdn.net/jpg/03/65/75/56/360_F_365755691_ylmF7k7q0wxMLIaeZdR7DcKBcKOf5Yot.jpg');
 }
