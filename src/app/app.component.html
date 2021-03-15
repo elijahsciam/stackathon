@@ -1,63 +1,152 @@
-<div id="header">
-  <h1>Music App</h1>
-</div>
-<hr />
-<div id="grid-buttons">
-  <div>
-    <input type="text" (keyup)="changeNote($event)" />
-    <button (click)="addButton($event)">Add Button</button>
-    <div class="row">
-      <div class="col">
-        <div ngbDropdown class="d-inline-block">
-          <button
-            class="btn btn-outline-primary"
-            id="dropdownBasic1"
-            ngbDropdownToggle
-          >
-            {{ dropdownItem }}
-          </button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button
-              ngbDropdownItem
-              *ngFor="let item of time; index as i"
-              (click)="changeValue($event)"
-            >
-              {{ time[i] }}
-            </button>
-          </div>
-          <div ngbDropdown class="d-inline-block">
-            <button
-              class="btn btn-outline-primary"
-              id="dropdownBasic1"
-              ngbDropdownToggle
-            >
-              {{ tempoItem }}
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button
-                ngbDropdownItem
-                *ngFor="let item of tempo; index as i"
-                (click)="changeValue($event)"
-                name="tempo"
-              >
-                {{ tempo[i] }}
-              </button>
+<body>
+  <div id="header">
+    <h1>Sexy Synth</h1>
+  </div>
+  <hr />
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink>Natural Keyboard</a>
+      <ng-template ngbNavContent
+        ><div id="grid-buttons">
+          <div>
+            <input type="text" (keyup)="changeNote($event)" />
+            <button (click)="addButton($event)">Add Note</button>
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <button
+                    class="btn btn-outline-primary"
+                    id="dropdownBasic1"
+                    ngbDropdownToggle
+                  >
+                    {{ dropdownItem }}
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button
+                      ngbDropdownItem
+                      *ngFor="let item of time; index as i"
+                      (click)="changeValue($event)"
+                    >
+                      {{ time[i] }}
+                    </button>
+                  </div>
+                  <div ngbDropdown class="d-inline-block">
+                    <button
+                      class="btn btn-outline-primary"
+                      id="dropdownBasic1"
+                      ngbDropdownToggle
+                    >
+                      {{ tempoItem }}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button
+                        ngbDropdownItem
+                        *ngFor="let item of tempo; index as i"
+                        (click)="changeValue($event)"
+                        name="tempo"
+                      >
+                        {{ tempo[i] }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div id="grid">
+                    <button
+                      *ngFor="let notes of grid; index as i"
+                      id="gridButton"
+                      (click)="playGridNote($event)"
+                      name="time"
+                    >
+                      {{ this.grid[i] }}
+                    </button>
+                  </div>
+                  <p>Notes Played: {{ gridNotes }}</p>
+                  <button (click)="playAllGridNotes()">Play All Notes</button>
+                  <button (click)="clearAllNotes()">Clear</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <button
-          *ngFor="let notes of grid; index as i"
-          id="gridButton"
-          (click)="playGridNote($event)"
-          name="time"
-        >
-          {{ this.grid[i] }}
-        </button>
-        <p>Notes Played: {{ gridNotes }}</p>
-        <button (click)="playAllGridNotes()">Play All Notes</button>
-      </div>
-    </div>
-  </div>
-</div>
+        </div></ng-template
+      >
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Accidental Keyboard</a>
+      <ng-template ngbNavContent
+        ><div id="grid-buttons">
+          <div>
+            <input type="text" (keyup)="changeNote($event)" />
+            <button (click)="addButton($event)">Add Note</button>
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <button
+                    class="btn btn-outline-primary"
+                    id="dropdownBasic1"
+                    ngbDropdownToggle
+                  >
+                    {{ dropdownItem }}
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button
+                      ngbDropdownItem
+                      *ngFor="let item of time; index as i"
+                      (click)="changeValue($event)"
+                    >
+                      {{ time[i] }}
+                    </button>
+                  </div>
+                  <div ngbDropdown class="d-inline-block">
+                    <button
+                      class="btn btn-outline-primary"
+                      id="dropdownBasic1"
+                      ngbDropdownToggle
+                    >
+                      {{ tempoItem }}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button
+                        ngbDropdownItem
+                        *ngFor="let item of tempo; index as i"
+                        (click)="changeValue($event)"
+                        name="tempo"
+                      >
+                        {{ tempo[i] }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div id="grid">
+                    <button
+                      *ngFor="let notes of grid; index as i"
+                      id="gridButton"
+                      (click)="playGridNote($event)"
+                      name="time"
+                    >
+                      {{ this.grid2[i] }}
+                    </button>
+                  </div>
+                  <p>Notes Played: {{ gridNotes }}</p>
+                  <button (click)="playAllGridNotes()">Play All Notes</button>
+                  <button (click)="clearAllNotes()">Clear</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></ng-template
+      >
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Songs</a>
+      <ng-template ngbNavContent>
+        <h2>My Heart Will Go On</h2>
+        <button (click)="celine()">Play</button>
+        <h2>Love Galore</h2>
+        <button>Play</button>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</body>
