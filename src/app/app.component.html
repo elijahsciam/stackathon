@@ -1,11 +1,6 @@
 <body>
   <div id="header">
-    <h1>Sexy Synth</h1>
-    <p>
-      The first selector controls the note length, '4n' is a quarter note, '8n'
-      is an eighth note, etc.
-    </p>
-    <p>The second selector controls the tempo</p>
+    <h1>Simple Synth</h1>
   </div>
   <hr />
   <ul ngbNav #nav="ngbNav" class="nav-tabs">
@@ -27,6 +22,7 @@
                     {{ dropdownItem }}
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <p>Select Note Value</p>
                     <button
                       ngbDropdownItem
                       *ngFor="let item of time; index as i"
@@ -44,6 +40,7 @@
                       {{ tempoItem }}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <p>Select Tempo</p>
                       <button
                         ngbDropdownItem
                         *ngFor="let item of tempo; index as i"
@@ -94,6 +91,7 @@
                     {{ dropdownItem }}
                   </button>
                   <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <p>Select Note Value</p>
                     <button
                       ngbDropdownItem
                       *ngFor="let item of time; index as i"
@@ -111,6 +109,7 @@
                       {{ tempoItem }}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <p>Select Tempo</p>
                       <button
                         ngbDropdownItem
                         *ngFor="let item of tempo; index as i"

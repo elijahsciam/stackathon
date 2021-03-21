@@ -124,6 +124,7 @@ export class AppComponent {
     setTimeout(() => {
       Tone.Transport.stop();
       synth.unsync();
+      this.counter = 0;
     }, this.counter * 1000);
   }
   celine() {
@@ -149,24 +150,24 @@ export class AppComponent {
     const synth = new Tone.MonoSynth().toDestination();
     synth.sync();
     synth.triggerAttackRelease(myHeart[0], '1n', 0);
-    synth.triggerAttackRelease(myHeart[1], '1n', 1);
-    synth.triggerAttackRelease(myHeart[2], '8n', 2);
-    synth.triggerAttackRelease(myHeart[3], '2n', 3);
-    synth.triggerAttackRelease(myHeart[4], '8n', 4);
-    synth.triggerAttackRelease(myHeart[5], '8n', 4.5);
-    synth.triggerAttackRelease(myHeart[6], '2n', 5);
-    synth.triggerAttackRelease(myHeart[7], '8n', 6);
-    synth.triggerAttackRelease(myHeart[8], '8n', 6.5);
-    synth.triggerAttackRelease(myHeart[9], '2n', 7);
-    synth.triggerAttackRelease(myHeart[10], '8n', 8);
-    synth.triggerAttackRelease(myHeart[11], '8n', 8.5);
-    synth.triggerAttackRelease(myHeart[12], '8n', 9);
-    synth.triggerAttackRelease(myHeart[13], '4n', 9.5);
-    synth.triggerAttackRelease(myHeart[14], '8n', 10.5);
-    synth.triggerAttackRelease(myHeart[15], '1n', 11);
-    synth.triggerAttackRelease(myHeart[16], '1n', 13);
+    synth.triggerAttackRelease(myHeart[1], '2n', 2);
+    synth.triggerAttackRelease(myHeart[2], '4n', 3);
+    synth.triggerAttackRelease(myHeart[3], '2n', 4);
+    synth.triggerAttackRelease(myHeart[4], '8n', 5);
+    synth.triggerAttackRelease(myHeart[5], '8n', 5.5);
+    synth.triggerAttackRelease(myHeart[6], '2n', 6);
+    synth.triggerAttackRelease(myHeart[7], '8n', 7);
+    synth.triggerAttackRelease(myHeart[8], '8n', 7.5);
+    synth.triggerAttackRelease(myHeart[9], '2n', 8);
+    synth.triggerAttackRelease(myHeart[10], '8n', 9);
+    synth.triggerAttackRelease(myHeart[11], '8n', 9.5);
+    synth.triggerAttackRelease(myHeart[12], '8n', 10);
+    synth.triggerAttackRelease(myHeart[13], '4n', 10.5);
+    synth.triggerAttackRelease(myHeart[14], '8n', 11.5);
+    synth.triggerAttackRelease(myHeart[15], '1n', 12);
+    synth.triggerAttackRelease(myHeart[16], '1n', 14);
     Tone.Transport.start();
-    Tone.Transport.stop(20);
+    Tone.Transport.stop(25);
   }
 }
 
