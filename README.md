@@ -1,6 +1,8 @@
-# AiMusic
+# Simple Synth
+A musical synthesizer that can dynamically play notes and record users inputs. It can also play a rendition of "My Heart Will Go On" by the one and only Celine Dion. Developed in 3 days with Angular.js and Tone.js 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+
+
 
 ## Development server
 
